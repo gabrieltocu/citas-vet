@@ -1,5 +1,27 @@
+import {useState, useEffect} from 'react';
 
 const Form = () => {
+  const [name, setName] = useState('');
+  const [owner, setOwner] = useState('');
+  const [email, setEmail] = useState('');
+  const [left, setLeft] = useState('');
+  const [symptoms, setSymptoms] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (
+      name.trim() === '' ||
+      owner.trim() === '' ||
+      email.trim() === '' ||
+      left.trim() === '' ||
+      symptoms.trim() === ''
+    ) {
+      console.log('Todos los campos son obligatorios');
+      return;
+    }
+    console.log('enviando datos');
+  };
+  
   return (
     <div className="md:w-1/2 lg:w-2/5 mx-4">
       <h2 className="font-black text-3xl text-center">Seguimiento Pacientes</h2>
@@ -7,7 +29,7 @@ const Form = () => {
         Añade Pacientes y { }{" "}
         <span className="text-indigo-700 font-bold">Administralos</span>{" "}
       </p>
-      <form action="" className="bg-white shadow-md rounded-lg py-10 px-5 mb-20">
+      <form className="bg-white shadow-md rounded-lg py-10 px-5 mb-20" onSubmit={handleSubmit}>
         <div className="mb-5">
           <label htmlFor="name" className="text-gray-700 uppercase font-bold">
             Nombre Mascota
@@ -17,6 +39,8 @@ const Form = () => {
             type="text"
             placeholder="Toti"
             className="w-full rounded-md border-2 placeholder-gray-400 py-1 mt-2"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
           />
         </div>
         <div className="mb-5">
@@ -28,6 +52,8 @@ const Form = () => {
             type="text"
             placeholder=" John Doe"
             className="w-full rounded-md border-2 placeholder-gray-400 py-1 mt-2"
+            value={owner}
+            onChange={(e) => setOwner(e.target.value)}
           />
         </div>
         <div className="mb-5">
@@ -39,6 +65,8 @@ const Form = () => {
             type="email"
             placeholder=" correo@gmail.com"
             className="w-full rounded-md border-2 placeholder-gray-400 py-1 mt-2"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
         <div className="mb-5">
@@ -49,6 +77,8 @@ const Form = () => {
             id="left"
             type="date"
             className="w-full rounded-md border-2 placeholder-gray-400 py-1 mt-2"
+            value={left}
+            onChange={(e) => setLeft(e.target.value)}
           />
         </div>
         <div className="mb-5">
@@ -65,6 +95,8 @@ const Form = () => {
             cols="30"
             rows="10"
             placeholder=" Duerme mucho"
+            value={symptoms}
+            onChange={(e) => setSymptoms(e.target.value)}
           ></textarea>
         </div>
 

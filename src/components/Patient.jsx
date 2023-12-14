@@ -5,7 +5,7 @@ const Patient = () => {
                 Nombre Mascota: <span className="font-normal normal-case">Toti</span>
             </p>
             <p className="font-bold mb-6 text-gray-700 uppercase">
-                Propietario: <span className="font-normal normal-case">Gabriel</span>
+                Propietario: <span className="font-normal normal-case">John Doe</span>
             </p>
             <p className="font-bold mb-6 text-gray-700 uppercase">
                 Email Propietario:{" "}
