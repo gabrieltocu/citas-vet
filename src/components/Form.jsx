@@ -6,20 +6,15 @@ const Form = () => {
   const [email, setEmail] = useState('');
   const [left, setLeft] = useState('');
   const [symptoms, setSymptoms] = useState('');
+  const [error, setError] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (
-      name.trim() === '' ||
-      owner.trim() === '' ||
-      email.trim() === '' ||
-      left.trim() === '' ||
-      symptoms.trim() === ''
-    ) {
-      console.log('Todos los campos son obligatorios');
+    if ([name, owner, email, left, symptoms].includes('')) {
+      setError(true);
       return;
     }
-    console.log('enviando datos');
+    setError(false);
   };
   
   return (
@@ -30,6 +25,9 @@ const Form = () => {
         <span className="text-indigo-700 font-bold">Administralos</span>{" "}
       </p>
       <form className="bg-white shadow-md rounded-lg py-10 px-5 mb-20" onSubmit={handleSubmit}>
+        {error && <div>
+          <p className="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-5 text-center rounded-md uppercase">**Todos los campos son obligatorios**</p>
+        </div> }
         <div className="mb-5">
           <label htmlFor="name" className="text-gray-700 uppercase font-bold">
             Nombre Mascota
